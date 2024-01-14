@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hotel_test_task/screen/book_room_screen.dart';
 import 'package:hotel_test_task/screen/hotel_screen.dart';
 
 void main() {
-  runApp(const MaterialApp(
+  runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: HotelScreen(),
+    theme: ThemeData(
+      fontFamily: 'SF-Pro-Display'
+    ),
+    home: const BookRoomScreen(),
   ));
 }
 
