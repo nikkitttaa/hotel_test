@@ -42,6 +42,12 @@ dependencies:
 
   flutter_multi_formatter: ^2.12.4
 
+  get: ^4.6.6
+
+  email_validator: ^2.1.17
+
+  flutter_masked_text2: ^0.9.1
+
 
   cupertino_icons: ^1.0.2
 
@@ -73,7 +79,7 @@ flutter:
     - assets/icons/close-square.png
     - assets/icons/emoji-happy.png
     - assets/icons/tick-square.png
-    # - images/a_dot_ham.jpeg
+    - assets/images/party_popper.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -3,6 +3,7 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:hotel_test_task/model/hotel_model.dart';
 import 'package:hotel_test_task/screen/rooms_screen.dart';
+import 'package:hotel_test_task/template/hotescr_containers.dart';
 import 'package:intl/intl.dart';
 
 
@@ -95,19 +96,7 @@ class _HotelScreenState extends State<HotelScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: const Color.fromARGB(100, 255, 199, 0)),
-                              margin: const EdgeInsets.all(10),
-                              padding: const EdgeInsets.all(5),
-                              child: Row(
-                                children: [
-                                  const Icon(Icons.star, color: Colors.orange, size: 20,),
-                                  Text('${hotel.rating} ${hotel.ratingName}', 
-                                    style: const TextStyle(color: Color.fromARGB(1000,255, 168, 0), fontSize: 16,
-                                    fontWeight: FontWeight.bold),),
-                                ],
-                              )
-                            ),
+                            RatingContainer(rating: hotel.rating, ratingName: hotel.ratingName)
                           ],
                         ),
                         Row(
@@ -189,81 +178,33 @@ class _HotelScreenState extends State<HotelScreen> {
                           height: 20,
                         ),
 
-                          //more info
-                        Container(
-                          decoration: BoxDecoration(color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(15)),
-                          child: Column(children: [
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children:[
-                                Row(
-                                  children: [
-                                    Image(image: AssetImage('assets/icons/emoji-happy.png'),),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                      Text('Удобства', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
-                                      Text('Самое необходимое', style: TextStyle(color: Color.fromARGB(1000, 130, 135, 150)),)
-                                    ],),
-                                  ],
-                                ),
-                                Icon(Icons.arrow_forward_ios)
-                              ],),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children:[
-                                Row(
-                                  children: [
-                                    Image(image: AssetImage('assets/icons/tick-square.png'),),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                      Text('Что включено', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
-                                      Text('Самое необходимое', style: TextStyle(color: Color.fromARGB(1000, 130, 135, 150)),)
-                                    ],),
-                                  ],
-                                ),
-                                Icon(Icons.arrow_forward_ios)
-                              ],),
-                            ),
-                            Container(
-                              margin: const EdgeInsets.all(10),
-                              child: const Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children:[
-                                Row(
-                                  children: [
-                                    Image(image: AssetImage('assets/icons/close-square.png'),),
-                                    SizedBox(
-                                      width: 10,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                      Text('Что не включено', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),),
-                                      Text('Самое необходимое', style: TextStyle(color: Color.fromARGB(1000, 130, 135, 150)),)
-                                    ],),
-                                  ],
-                                ),
-                                Icon(Icons.arrow_forward_ios)
-                              ],),
-                            )
-                          ]),
-                        )
+                        //more info
+                        const MoreInfoContainer(),
                     ]),
-                  )
+                  ),
+
+                  const SizedBox(
+                      height: 10,
+                    ),
+
+                    Container(
+                    padding: const EdgeInsets.all(10),
+                    color: Colors.white,
+                    width: MediaQuery.sizeOf(context).width/1,
+                      child: Column(
+                        children: [
+                          Container(
+                          width: MediaQuery.sizeOf(context).width/1.05,
+                            decoration: BoxDecoration(color: const Color.fromARGB(1000, 13, 114, 255), borderRadius: BorderRadius.circular(15) ),
+                            child: TextButton(onPressed: (){
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const RoomsScreen()));
+                            }, 
+                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color.fromARGB(1000, 13, 114, 255))),
+                              child: const Text('К выбору номера', style: TextStyle(color: Colors.white, fontSize: 16),),),
+                        ),
+                      ],
+                    ),
+                  ), 
                 ],
               ),
             );
@@ -278,11 +219,6 @@ class _HotelScreenState extends State<HotelScreen> {
           }
         },
       ),
-      bottomNavigationBar: ElevatedButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const RoomsScreen()));
-      }, 
-      style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color.fromARGB(1000, 13, 114, 255))),
-        child: const Text('К выбору номера', style: TextStyle(color: Colors.white, fontSize: 16),),),
     );
   }
 }

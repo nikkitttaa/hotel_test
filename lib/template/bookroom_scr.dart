@@ -1,30 +1,21 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, must_be_immutable
 import 'package:flutter/material.dart';
 
-class InfoCountBook extends StatefulWidget {
-  const InfoCountBook({super.key, required this.text, required this.count});
 
-  final String text;
-  final String count;
+class InfoBook extends StatelessWidget {
+  String text;
+  String count;
   
+  InfoBook({
+    Key? key,
+    required this.text,
+    required this.count,
+  }) : super(key: key);
 
-  @override
-  State<InfoCountBook> createState() => _InfoCountBookState();
-}
 
-class _InfoCountBookState extends State<InfoCountBook> {
-
-  late String count;
-  late String text;
-
-  @override 
-  void initState() {
-    super.initState();
-    text = widget.text;
-    count = widget.count;
-  }
   @override
   Widget build(BuildContext context) {
-    return  Container(
+    return Container(
       padding: const EdgeInsets.all(6),
       margin: EdgeInsets.symmetric(horizontal: MediaQuery.sizeOf(context).width/20),
       child: Row(
