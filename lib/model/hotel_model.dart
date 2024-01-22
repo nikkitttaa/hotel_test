@@ -13,7 +13,6 @@ class Hotel {
   final String description;
   final List<String> peculiarities;
 
-
   Hotel({
     required this.id,
     required this.name,
@@ -32,7 +31,8 @@ class Hotel {
     List<String> imageUrls = imageUrlList.map((url) => url.toString()).toList();
 
     List<dynamic> peculiaritiesList = json['about_the_hotel']['peculiarities'];
-    List<String> peculiarities = peculiaritiesList.map((peculiarity) => peculiarity.toString()).toList();
+    List<String> peculiarities =
+        peculiaritiesList.map((peculiarity) => peculiarity.toString()).toList();
 
     return Hotel(
       id: json['id'],
@@ -49,9 +49,9 @@ class Hotel {
   }
 
   static Future<Hotel> fetchHotelData() async {
-    var url = 'https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473'; 
+    var url = 'https://run.mocky.io/v3/d144777c-a67f-4e35-867a-cacc3b827473';
     var response = await http.get(Uri.parse(url));
-    
+
     if (response.statusCode == 200) {
       var jsonBody = json.decode(response.body);
       return Hotel.fromJson(jsonBody);

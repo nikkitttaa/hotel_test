@@ -39,7 +39,8 @@ class Room {
 }
 
 Future<List<Room>> fetchRooms() async {
-  final response = await http.get(Uri.parse('https://run.mocky.io/v3/8b532701-709e-4194-a41c-1a903af00195'));
+  final response = await http.get(Uri.parse(
+      'https://run.mocky.io/v3/8b532701-709e-4194-a41c-1a903af00195'));
 
   if (response.statusCode == 200) {
     List<dynamic> jsonResponse = json.decode(response.body)['rooms'];

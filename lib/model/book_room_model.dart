@@ -19,7 +19,6 @@ class BookRoom {
   final int tourPrice;
   final int fuelCharge;
   final int serviceCharge;
-  
 
   BookRoom({
     required this.id,
@@ -39,7 +38,7 @@ class BookRoom {
     required this.serviceCharge,
   });
 
-    factory BookRoom.fromJson(Map<String, dynamic> json) {
+  factory BookRoom.fromJson(Map<String, dynamic> json) {
     return BookRoom(
       id: json['id'] as int,
       hotelName: json['hotel_name'] as String,
@@ -58,11 +57,11 @@ class BookRoom {
       serviceCharge: json['service_charge'] as int,
     );
   }
-  
+
   static Future<BookRoom> fetchBookRoomData() async {
-    var url = 'https://run.mocky.io/v3/63866c74-d593-432c-af8e-f279d1a8d2ff'; 
+    var url = 'https://run.mocky.io/v3/63866c74-d593-432c-af8e-f279d1a8d2ff';
     var response = await http.get(Uri.parse(url));
-    
+
     if (response.statusCode == 200) {
       final Map<String, dynamic> jsonBody = json.decode(response.body);
       return BookRoom.fromJson(jsonBody);
